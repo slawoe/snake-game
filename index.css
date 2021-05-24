@@ -5,3 +5,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  margin: 0.625rem;
+  padding: 0.625rem;
+}
+.grid {
+  width: 12.5rem;
+  height: 12.5rem;
+  border: black solid 0.125rem;
+}
+.grid div {
+  width: 0.625rem;
+  height: 0.625rem;
+}
