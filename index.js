@@ -26,4 +26,4 @@ function move() {
   squares[head].classList.add("snake");
 }
 
-move();
+const timerId = setInterval(move, 1000);
