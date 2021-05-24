@@ -5,6 +5,7 @@ const width = 10;
 let squares = [];
 let currentSnake = [2, 1, 0];
 let direction = 1;
+let foodIndex = 0;
 
 function gridCreator() {
   for (let i = 0; i < width * width; i++) {
@@ -38,6 +39,15 @@ function move() {
 }
 
 const timerId = setInterval(move, 1000);
+
+function generateFood() {
+  do {
+    foodIndex = Math.floor(Math.random() * squares.length);
+  } while (squares[foodIndex].classList.contains("snake"));
+  squares[foodIndex].classList.add("food");
+}
+
+generateFood();
 
 function control(e) {
   switch (e.key) {
