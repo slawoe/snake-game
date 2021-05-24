@@ -34,8 +34,15 @@ function move() {
   const tail = currentSnake.pop();
   squares[tail].classList.remove("snake");
   currentSnake.unshift(currentSnake[0] + direction);
-  const head = currentSnake[0];
-  squares[head].classList.add("snake");
+
+  if (squares[currentSnake[0]].classList.contains("food")) {
+    squares[currentSnake[0]].classList.remove("food");
+    squares[tail].classList.add("snake");
+    currentSnake.push(tail);
+    generateApple();
+  }
+
+  squares[currentSnake[0]].classList.add("snake");
 }
 
 const timerId = setInterval(move, 1000);
