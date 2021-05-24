@@ -10,11 +10,13 @@ body {
   padding: 0.625rem;
 }
 .grid {
-  width: 12.5rem;
-  height: 12.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 204px;
+  height: 204px;
   border: black solid 0.125rem;
 }
-.grid div {
-  width: 0.625rem;
-  height: 0.625rem;
+.square {
+  width: 20px;
+  height: 20px;
 }
