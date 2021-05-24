@@ -6,6 +6,8 @@ let squares = [];
 let currentSnake = [2, 1, 0];
 let direction = 1;
 let foodIndex = 0;
+let intervalTime = 1000;
+let speed = 0.9;
 
 function gridCreator() {
   for (let i = 0; i < width * width; i++) {
@@ -39,13 +41,16 @@ function move() {
     squares[currentSnake[0]].classList.remove("food");
     squares[tail].classList.add("snake");
     currentSnake.push(tail);
-    generateApple();
+    generateFood();
+    clearInterval(timerId);
+    intervalTime = intervalTime * speed;
+    timerId = setInterval(move, intervalTime);
   }
 
   squares[currentSnake[0]].classList.add("snake");
 }
 
-const timerId = setInterval(move, 1000);
+let timerId = setInterval(move, intervalTime);
 
 function generateFood() {
   do {
