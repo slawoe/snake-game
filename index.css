@@ -5,24 +5,52 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  font-family: Arial;
+}
 body {
-  margin: 0.625rem;
-  padding: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  background: black;
+  height: 80vh;
+  color: white;
+  text-transform: uppercase;
+}
+button {
+  color: inherit;
+  border: 2px solid white;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
 }
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 204px;
-  height: 204px;
-  border: black solid 0.125rem;
+  width: 404px;
+  height: 404px;
+  border: white solid 1px;
+  background: rgb(164, 172, 146);
+  margin: 50px;
 }
 .square {
   width: 20px;
   height: 20px;
+  border: 1px solid rgb(153, 160, 136);
+}
+#start {
+  margin: 20px;
 }
 .snake {
-  background-color: black;
+  background-color: rgb(77, 76, 76);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
 }
 .food {
-  background-color: green;
+  background-color: rgb(136, 110, 196);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
 }
