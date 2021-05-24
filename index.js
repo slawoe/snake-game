@@ -8,6 +8,7 @@ let direction = 1;
 let foodIndex = 0;
 let intervalTime = 1000;
 let speed = 0.9;
+let actualScore = 0;
 
 function gridCreator() {
   for (let i = 0; i < width * width; i++) {
@@ -45,6 +46,8 @@ function move() {
     clearInterval(timerId);
     intervalTime = intervalTime * speed;
     timerId = setInterval(move, intervalTime);
+    actualScore++;
+    score.innerText = actualScore;
   }
 
   squares[currentSnake[0]].classList.add("snake");
