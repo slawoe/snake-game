@@ -4,6 +4,7 @@ const score = document.querySelector("#score");
 let squares = [];
 let currentSnake = [2, 1, 0];
 let direction = 1;
+let width = 10;
 
 function gridCreator() {
   for (let i = 0; i < 100; i++) {
@@ -27,3 +28,28 @@ function move() {
 }
 
 const timerId = setInterval(move, 1000);
+
+function control(e) {
+  switch (e.key) {
+    case "Down": // IE/Edge specific value
+    case "ArrowDown":
+      direction = +width;
+      break;
+    case "Up": // IE/Edge specific value
+    case "ArrowUp":
+      direction = -width;
+      break;
+    case "Left": // IE/Edge specific value
+    case "ArrowLeft":
+      direction = -1;
+      break;
+    case "Right": // IE/Edge specific value
+    case "ArrowRight":
+      direction = 1;
+      break;
+    default:
+      return;
+  }
+}
+
+document.addEventListener("keyup", control);
