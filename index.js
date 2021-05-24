@@ -25,6 +25,16 @@ gridCreator();
 currentSnake.forEach((index) => squares[index].classList.add("snake"));
 
 function startGame() {
+  currentSnake.forEach((index) => squares[index].classList.remove("snake"));
+  squares[foodIndex].classList.remove("food");
+  clearInterval(timerId);
+  currentSnake = [2, 1, 0];
+  actualScore = 0;
+  score.innerText = actualScore;
+  direction = 1;
+  intervalTime = 1000;
+  generateFood();
+  currentSnake.forEach((index) => squares[index].classList.add("snake"));
   timerId = setInterval(move, intervalTime);
 }
 
