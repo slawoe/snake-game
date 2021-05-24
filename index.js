@@ -1,13 +1,13 @@
 const grid = document.querySelector(".grid");
 const startButton = document.querySelector("#start");
 const score = document.querySelector("#score");
+const width = 10;
 let squares = [];
 let currentSnake = [2, 1, 0];
 let direction = 1;
-let width = 10;
 
 function gridCreator() {
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < width * width; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
     grid.appendChild(square);
@@ -21,10 +21,10 @@ currentSnake.forEach((index) => squares[index].classList.add("snake"));
 
 function move() {
   if (
-    (currentSnake[0] + width >= 100 && direction === 10) || // hits bottom
-    (currentSnake[0] % width === 9 && direction === 1) || // hits right wall
+    (currentSnake[0] + width >= width * width && direction === width) || // hits bottom
+    (currentSnake[0] % width === width - 1 && direction === 1) || // hits right wall
     (currentSnake[0] % width === 0 && direction === -1) || // hits left wall
-    (currentSnake[0] - width < 0 && direction === -10) || // hits top
+    (currentSnake[0] - width < 0 && direction === -width) || // hits top
     squares[currentSnake[0] + direction].classList.contains("snake") // is part of the snake
   ) {
     return clearInterval(timerId);
