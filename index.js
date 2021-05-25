@@ -2,12 +2,14 @@ const grid = document.querySelector(".grid");
 const startButton = document.querySelector("#start");
 const score = document.querySelector("#score");
 const width = 10;
+let timerId = 0;
 let squares = [];
 let currentSnake = [2, 1, 0];
 let direction = 1;
 let foodIndex = 0;
 let intervalTime = 1000;
 let speed = 0.9;
+let actualScore = 0;
 
 function gridCreator() {
   for (let i = 0; i < width * width; i++) {
@@ -21,6 +23,20 @@ function gridCreator() {
 gridCreator();
 
 currentSnake.forEach((index) => squares[index].classList.add("snake"));
+
+function startGame() {
+  currentSnake.forEach((index) => squares[index].classList.remove("snake"));
+  squares[foodIndex].classList.remove("food");
+  clearInterval(timerId);
+  currentSnake = [2, 1, 0];
+  actualScore = 0;
+  score.innerText = actualScore;
+  direction = 1;
+  intervalTime = 1000;
+  generateFood();
+  currentSnake.forEach((index) => squares[index].classList.add("snake"));
+  timerId = setInterval(move, intervalTime);
+}
 
 function move() {
   if (
@@ -36,7 +52,6 @@ function move() {
   const tail = currentSnake.pop();
   squares[tail].classList.remove("snake");
   currentSnake.unshift(currentSnake[0] + direction);
-
   if (squares[currentSnake[0]].classList.contains("food")) {
     squares[currentSnake[0]].classList.remove("food");
     squares[tail].classList.add("snake");
@@ -45,12 +60,11 @@ function move() {
     clearInterval(timerId);
     intervalTime = intervalTime * speed;
     timerId = setInterval(move, intervalTime);
+    actualScore++;
+    score.innerText = actualScore;
   }
-
   squares[currentSnake[0]].classList.add("snake");
 }
-
-let timerId = setInterval(move, intervalTime);
 
 function generateFood() {
   do {
@@ -85,3 +99,4 @@ function control(e) {
 }
 
 document.addEventListener("keyup", control);
+document.addEventListener("click", startGame);
