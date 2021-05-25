@@ -1,5 +1,6 @@
 const grid = document.querySelector(".grid");
 const startButton = document.querySelector("#start");
+const movementButtons = document.querySelector(".movement-buttons");
 const score = document.querySelector("#score");
 const time = document.querySelector("#time");
 const width = 20;
@@ -81,27 +82,30 @@ function generateFood() {
 generateFood();
 
 function control(e) {
-  switch (e.key) {
+  switch (e.key || e.target.id) {
     case "Down": // IE/Edge specific value
     case "ArrowDown":
+    case "down":
       direction = +width;
       break;
     case "Up": // IE/Edge specific value
     case "ArrowUp":
+    case "up":
       direction = -width;
       break;
     case "Left": // IE/Edge specific value
     case "ArrowLeft":
+    case "left":
       direction = -1;
       break;
     case "Right": // IE/Edge specific value
     case "ArrowRight":
+    case "right":
       direction = 1;
       break;
-    default:
-      return;
   }
 }
 
 document.addEventListener("keyup", control);
 startButton.addEventListener("click", startGame);
+movementButtons.addEventListener("click", control);
