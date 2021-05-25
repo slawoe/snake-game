@@ -1,4 +1,5 @@
 const grid = document.querySelector(".grid");
+const gameover = document.querySelector(".gameover");
 const startButton = document.querySelector("#start");
 const movementButtons = document.querySelector(".movement-buttons");
 const score = document.querySelector("#score");
@@ -25,11 +26,11 @@ function gridCreator() {
 gridCreator();
 
 currentSnake.forEach((index) => squares[index].classList.add("snake"));
-
 function startGame() {
   currentSnake.forEach((index) => squares[index].classList.remove("snake"));
   squares[foodIndex].classList.remove("food");
   clearInterval(timerId);
+  gameover.style.display = "none";
   currentSnake = [2, 1, 0];
   actualScore = 0;
   actualTime = 0;
@@ -50,6 +51,9 @@ function move() {
     (currentSnake[0] - width < 0 && direction === -width) || // hits top
     squares[currentSnake[0] + direction].classList.contains("snake") // is part of the snake
   ) {
+    currentSnake.forEach((index) => squares[index].classList.remove("snake"));
+    squares[foodIndex].classList.remove("food");
+    gameover.style.display = "block";
     return clearInterval(timerId);
   }
   const tail = currentSnake.pop();
