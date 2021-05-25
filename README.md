@@ -9,3 +9,5 @@ If you hit the wall or start biting yourself the game is over.
 It's designed for and playable on desktop and mobile too.
 
 Hours spent: ca. 4-5
+
+[Play it here](https://slawoe.github.io/snake-game/)
