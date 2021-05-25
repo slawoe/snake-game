@@ -8,10 +8,31 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <h1>Snake</h1>
-    <div class="grid"></div>
-    <h2>Your score: <span id="score">0</span></h2>
-    <button id="start">Start/Restart</button>
+    <h1>Snake Game</h1>
+    <p class="instructions">
+      Move around using arrow keys on the keyboard or corresponding buttons.<br />Start/restart the game with the corresponding button below.<br/>Don't hit the walls!</p>
+    </p>
+    <div class="game">
+      <div class="display">
+        <div class="display-headline">
+          <p>Time: <span id="time">0</span></p>
+          <p>Score: <span id="score">0</span></p>
+        </div>
+        <div class="grid"></div>
+      </div>
+      <div class="button-container">
+        <div class="start-button">
+          <p>Start/<br />Restart</p>
+          <button id="start"></button>
+        </div>
+        <div class="movement-buttons">
+          <button id="up">&#8593;</button>
+          <button id="left">&#8592;</button>
+          <button id="right">&#8594;</button>
+          <button id="down">&#8595;</button>
+        </div>
+      </div>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
