@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("./assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Bangers";
+  src: url("./assets/fonts/Bangers-Regular.ttf") format("truetype");
+}
+
 *,
 *:before,
 *:after {
@@ -6,51 +16,186 @@
   box-sizing: border-box;
 }
 html {
-  font-family: Arial;
+  font-family: "Bangers", cursive;
 }
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px;
-  padding: 10px;
+  min-height: 100vh;
   background: black;
-  height: 80vh;
   color: white;
   text-transform: uppercase;
+  letter-spacing: 0.1875rem;
 }
 button {
+  padding: 0.3125rem;
+  border: none;
+  background: grey;
   color: inherit;
-  border: 2px solid white;
-  background: transparent;
-  padding: 5px;
-  border-radius: 5px;
+}
+h1 {
+  color: rgb(136, 110, 196);
+}
+p {
+  text-align: center;
+}
+.instructions {
+  padding: 1.5625rem 0.3125rem;
+  max-width: 31.1875rem;
+  color: rgb(210, 207, 207);
+  font-size: 0.8rem;
+}
+.game {
+  padding: 1.875rem 2.8125rem 1.875rem 1.875rem;
+  border-radius: 0.625rem 0.625rem 3.75rem 3.75rem;
+  background: rgb(193, 190, 190);
+  font-family: "Press Start 2P", cursive;
+  box-shadow: inset -0.9375rem -0.9375rem 0.625rem grey,
+    inset 0.125rem 0.125rem 0.625rem grey;
+}
+.display {
+  display: flex;
+  flex-direction: column;
+  padding: 0.625rem;
+  background: rgb(164, 172, 146);
+  color: black;
+  box-shadow: inset 0 0 0.625rem #000000;
 }
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 404px;
-  height: 404px;
-  border: white solid 1px;
+  width: 25.25rem;
+  height: 25.25rem;
+  border: grey solid 0.0625rem;
   background: rgb(164, 172, 146);
-  margin: 50px;
+}
+.display-headline {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.125rem 0;
 }
 .square {
-  width: 20px;
-  height: 20px;
-  border: 1px solid rgb(153, 160, 136);
-}
-#start {
-  margin: 20px;
+  width: 1.25rem;
+  border: 0.0625rem solid rgb(153, 160, 136);
+  height: 1.25rem;
 }
 .snake {
+  border: 0.0625rem solid rgb(0, 0, 0);
   background-color: rgb(77, 76, 76);
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
+  border-radius: 0.125rem;
 }
 .food {
+  border: 0.0625rem solid rgb(0, 0, 0);
   background-color: rgb(136, 110, 196);
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
+  border-radius: 0.125rem;
+}
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.25rem 0;
+}
+.start-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.625rem;
+  color: rgb(29, 28, 28);
+  font-size: 0.5rem;
+  line-height: 1.1rem;
+}
+.movement-buttons {
+  display: grid;
+  grid-template: 2.5rem 2.5rem 2.5rem / 2.5rem 2.5rem 2.5rem;
+}
+#left,
+#right,
+#down,
+#up {
+  margin: 0.125rem;
+  width: 2.5rem;
+  border-radius: 0.625rem;
+  box-shadow: 0.125rem 0.125rem rgb(62, 62, 62),
+    0.0156rem 0.0156rem rgb(62, 62, 62) inset;
+  color: rgb(0, 0, 0);
+  font-size: 1.25rem;
+}
+#left {
+  grid-area: 2 / 1/ 3 /2;
+}
+#right {
+  grid-area: 2 / 3/ 3 /4;
+}
+#down {
+  grid-area: 3 / 2/ 4 /3;
+}
+#up {
+  grid-area: 1 / 2/ 2 /3;
+}
+#start {
+  align-self: center;
+  width: 3.75rem;
+  height: 1.25rem;
+  border-radius: 0.625rem;
+  box-shadow: 0.125rem 0.125rem rgb(62, 62, 62),
+    0.0313rem 0.0625rem rgb(62, 62, 62) inset;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    letter-spacing: 0.125rem;
+  }
+  .instructions {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.75rem;
+  }
+  .game {
+    padding: 1.25rem 1.875rem 1.25rem 1.25rem;
+    border-radius: 0.625rem 0.625rem 3.75rem 3.75rem;
+    box-shadow: inset -0.625rem -0.625rem 0.625rem grey,
+      inset 0.0625rem 0.0625rem 0.625rem grey;
+  }
+  .display {
+    padding: 0.625rem;
+  }
+  .grid {
+    width: 12.75rem;
+    height: 12.75rem;
+  }
+  .display-headline {
+    padding: 0.125rem 0;
+    font-size: 0.625rem;
+  }
+  .square {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.25rem 0;
+  }
+  .start-button {
+    font-size: 0.35rem;
+    line-height: 0.5rem;
+  }
+  .movement-buttons {
+    grid-template: 1.875rem 1.875rem 1.875rem / 1.875rem 1.875rem 1.875rem;
+  }
+  #left,
+  #right,
+  #down,
+  #up {
+    font-size: 1rem;
+    width: 2.5rem;
+  }
+  #start {
+    align-self: center;
+    width: 2.5rem;
+    height: 0.9375rem;
+    border-radius: 0.625rem;
+    box-shadow: 0.125rem 0.125rem rgb(62, 62, 62),
+      0.0313rem 0.0625rem rgb(62, 62, 62) inset;
+  }
 }
