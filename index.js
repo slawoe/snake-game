@@ -96,4 +96,4 @@ function control(e) {
 }
 
 document.addEventListener("keyup", control);
-document.addEventListener("click", startGame);
+startButton.addEventListener("click", startGame);
